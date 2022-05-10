@@ -46,6 +46,11 @@
     <br />
     <br />
 
+    <button @click="goTmp">tmp 페이지 이동</button>
+
+    <br />
+    <br />
+
     <button @click="test1">테스트1</button>
 
     <br />
@@ -81,7 +86,7 @@ export default {
 
   async created() {
     // 공통함수 설정 테스트 (start)  ----------------------------------------------------------
-    console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  56");
+    console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  84");
     console.log(this.$isIe());
     console.log(this.$isMobile());
     // 공통함수 설정 테스트 (end)  ----------------------------------------------------------
@@ -89,7 +94,7 @@ export default {
     // axios 테스트 (start)  ----------------------------------------------------------
     const rtn = await axios.get("https://jsonplaceholder.typicode.com/todos/");
 
-    console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  66");
+    console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  92");
     console.log(rtn);
     // axios 테스트 (end)    ----------------------------------------------------------
   },
@@ -122,6 +127,14 @@ export default {
       this.message = "";
     },
 
+    async goTmp() {
+      // router push 테스트 (start)  ----------------------------------------------------------
+      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  132");
+
+      this.$router.push("/tmp");
+      // router push 테스트 (end)    ----------------------------------------------------------
+    },
+
     async test1() {
       const formdata = new FormData();
       formdata.append("id", "stargenius");
@@ -139,7 +152,7 @@ export default {
         }
       );
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  126");
+      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  142");
       console.log(rtn1);
       // axios 테스트 (end)    ----------------------------------------------------------
     },
@@ -148,7 +161,7 @@ export default {
       // axios 테스트 (start)  ----------------------------------------------------------
       const rtn2 = await axios.get("http://localhost:5050/process/product");
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  135");
+      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  151");
       console.log(rtn2);
       // axios 테스트 (end)    ----------------------------------------------------------
     },
@@ -159,14 +172,14 @@ export default {
         "https://jsonplaceholder.typicode.com/todos/"
       );
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  148");
+      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  162");
       console.log(rtn3);
       // axios 테스트 (end)    ----------------------------------------------------------
     },
 
     async clickLogin() {
       // router push 테스트 (start)  ----------------------------------------------------------
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  163");
+      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  169");
 
       this.$router.push("/login");
       // router push 테스트 (end)    ----------------------------------------------------------
@@ -174,7 +187,7 @@ export default {
 
     async clickSignup() {
       // router push 테스트 (start)  ----------------------------------------------------------
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  173");
+      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  177");
 
       this.$router.push("/signup");
       // router push 테스트 (end)    ----------------------------------------------------------
