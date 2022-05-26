@@ -8,16 +8,16 @@
 //*
 //***********************************************************************************
 
-import Vue from "vue";
-import router from "@/router/index.js";
-import store from "@/store/index.js";
-import App from "./App.vue";
-import * as global from "@/utils/global.js";
-import * as functionList from "@/utils/functionList.js";
+import Vue from 'vue';
+import router from '@/router/index.js';
+import store from '@/store/index.js';
+import App from './App.vue';
+import * as global from '@/utils/global.js';
+import * as functionList from '@/utils/functionList.js';
 
 Vue.config.productionTip = false;
 
-console.log(">>>>>>>>>>>>>>>>>>  main.js  19");
+console.log('>>>>>>>>>>>>>>>>>>  main.js  19');
 console.log(global);
 
 // 1. 공통 함수들을 vue.prototype에 세팅한다.
@@ -33,4 +33,4 @@ window.vmForFccTaaProject = new Vue({
   render: (h) => h(App),
   router,
   store,
-}).$mount("#app");
+}).$mount('#app');

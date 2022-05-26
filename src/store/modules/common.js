@@ -27,7 +27,7 @@ const common = {
 
   actions: {
     setPostList: ({ commit }, payload) => {
-      commit("SET_POST_LIST", payload);
+      commit('SET_POST_LIST', payload);
     },
   },
 };

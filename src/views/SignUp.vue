@@ -23,15 +23,15 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
-  name: "SignUp",
+  name: 'SignUp',
 
   data() {
     return {
-      id: "",
-      pw: "",
+      id: '',
+      pw: '',
     };
   },
 
@@ -49,7 +49,7 @@ export default {
       // formdata.set("id", this.id);
       // formdata.set("pw", this.pw);
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  SignUp.vue  48");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  SignUp.vue  48');
       console.log(this.id);
       console.log(this.pw);
 
@@ -62,7 +62,7 @@ export default {
         pw: this.pw,
       };
 
-      const rtn1 = await axios.post("http://localhost:5050/signup", fd);
+      const rtn1 = await axios.post('http://localhost:5050/signup', fd);
 
       // axios({
       //   method: "post",
@@ -75,7 +75,7 @@ export default {
       //   header: { "Context-Type": "multipart/form-data" },
       // });
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  SignUp.vue  76");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  SignUp.vue  76');
       console.log(rtn1);
     },
   },

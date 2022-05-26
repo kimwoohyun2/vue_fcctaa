@@ -24,7 +24,7 @@
 export function isMobile() {
   if (
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
+      navigator.userAgent,
     )
   ) {
     return true;
@@ -41,9 +41,9 @@ export function isMobile() {
 //***********************************************************************************
 export function isIe() {
   if (
-    (navigator.appName === "Netscape" &&
-      navigator.userAgent.search("Trident") != -1) ||
-    navigator.userAgent.toLowerCase().indexOf("msie") != -1
+    (navigator.appName === 'Netscape' &&
+      navigator.userAgent.search('Trident') != -1) ||
+    navigator.userAgent.toLowerCase().indexOf('msie') != -1
   ) {
     return true;
   } else {

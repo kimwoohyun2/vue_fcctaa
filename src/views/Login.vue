@@ -12,22 +12,22 @@
 
 <template>
   <div>
-    <input type="text" name="id" v-model="id" placeholder="아이디" />
-    <input type="password" name="pw" v-model="pw" placeholder="비밀번호" />
+    <input name="id" v-model="id" placeholder="아이디" type="text" />
+    <input name="pw" v-model="pw" placeholder="비밀번호" type="password" />
     <button @click="clickLogin">로그인</button>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
-  name: "Login",
+  name: 'Login',
 
   data() {
     return {
-      id: "",
-      pw: "",
+      id: '',
+      pw: '',
     };
   },
 
@@ -45,7 +45,7 @@ export default {
       // formdata.set("id", this.id);
       // formdata.set("pw", this.pw);
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Login.vue  54");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Login.vue  48');
       console.log(this.id);
       console.log(this.pw);
 
@@ -58,7 +58,9 @@ export default {
         pw: this.pw,
       };
 
-      const rtn1 = await axios.post("http://localhost:5050/login2", fd);
+      // (참고) api 호출 시 팁
+      // 1. vue.config.js 에서 proxy 설정되어 있는 것을 고려할 것.
+      const rtn1 = await axios.post('/api/login2', fd);
 
       // axios({
       //   method: "post",
@@ -71,7 +73,7 @@ export default {
       //   header: { "Context-Type": "multipart/form-data" },
       // });
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Login.vue  76");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Login.vue  76');
       console.log(rtn1);
     },
   },

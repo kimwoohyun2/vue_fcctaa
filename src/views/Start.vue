@@ -62,15 +62,20 @@
     <br />
 
     <button @click="test3">테스트3</button>
+
+    <br />
+    <br />
+
+    <button @click="testgojs">테스트 gojs</button>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import HelloWorld from "@/components/HelloWorld.vue";
+import axios from 'axios';
+import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
-  name: "Main",
+  name: 'Main',
 
   components: {
     HelloWorld,
@@ -78,90 +83,92 @@ export default {
 
   data() {
     return {
-      message: "",
+      message: '',
       logs: [],
-      status: "disconnected",
+      status: 'disconnected',
     };
   },
 
   async created() {
     // 공통함수 설정 테스트 (start)  ----------------------------------------------------------
-    console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  84");
+    console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  84');
     console.log(this.$isIe());
     console.log(this.$isMobile());
     // 공통함수 설정 테스트 (end)  ----------------------------------------------------------
 
     // axios 테스트 (start)  ----------------------------------------------------------
-    const rtn = await axios.get("https://jsonplaceholder.typicode.com/todos/");
+    const rtn = await axios.get('https://jsonplaceholder.typicode.com/todos/');
 
-    console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  92");
+    console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  92');
     console.log(rtn);
     // axios 테스트 (end)    ----------------------------------------------------------
   },
 
   methods: {
     connect() {
-      this.socket = new WebSocket("wss://echo.websocket.org");
+      this.socket = new WebSocket('wss://echo.websocket.org');
       this.socket.onopen = () => {
-        this.status = "connected";
+        this.status = 'connected';
         this.logs.push({
-          event: "연결 완료: ",
-          data: "wss://echo.websocket.org",
+          event: '연결 완료: ',
+          data: 'wss://echo.websocket.org',
         });
 
         this.socket.onmessage = ({ data }) => {
-          this.logs.push({ event: "메세지 수신", data });
+          this.logs.push({ event: '메세지 수신', data });
         };
       };
     },
 
     disconnect() {
       this.socket.close();
-      this.status = "disconnected";
+      this.status = 'disconnected';
       this.logs = [];
     },
 
     sendMessage() {
       this.socket.send(this.message);
-      this.logs.push({ event: "메시지 전송", data: this.message });
-      this.message = "";
+      this.logs.push({ event: '메시지 전송', data: this.message });
+      this.message = '';
     },
 
     async goTmp() {
       // router push 테스트 (start)  ----------------------------------------------------------
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  132");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  132');
 
-      this.$router.push("/tmp");
+      this.$router.push('/tmp');
       // router push 테스트 (end)    ----------------------------------------------------------
     },
 
     async test1() {
       const formdata = new FormData();
-      formdata.append("id", "stargenius");
-      formdata.append("pw", "pw1234");
+      formdata.append('id', 'stargenius');
+      formdata.append('pw', 'pw1234');
 
       // axios 테스트 (start)  ----------------------------------------------------------
       // const rtn1 = await axios.get("http://localhost:5050/process/login");
       const rtn1 = await axios.post(
-        "http://localhost:5050/process/login",
+        'http://localhost:5050/process/login',
         formdata,
         {
           header: {
-            "Context-Type": "multipart/form-data",
+            'Context-Type': 'multipart/form-data',
           },
-        }
+        },
       );
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  142");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  142');
       console.log(rtn1);
       // axios 테스트 (end)    ----------------------------------------------------------
     },
 
     async test2() {
       // axios 테스트 (start)  ----------------------------------------------------------
-      const rtn2 = await axios.get("http://localhost:5050/process/product");
+      // const rtn2 = await axios.get('http://localhost:5050/api/prod');
+      const rtn2 = await axios.get('/api/prod');
+      // const rtn2 = await axios.get('/tmp');
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  151");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  151');
       console.log(rtn2);
       // axios 테스트 (end)    ----------------------------------------------------------
     },
@@ -169,27 +176,35 @@ export default {
     async test3() {
       // axios 테스트 (start)  ----------------------------------------------------------
       const rtn3 = await axios.get(
-        "https://jsonplaceholder.typicode.com/todos/"
+        'https://jsonplaceholder.typicode.com/todos/',
       );
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  162");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  162');
       console.log(rtn3);
       // axios 테스트 (end)    ----------------------------------------------------------
     },
 
     async clickLogin() {
       // router push 테스트 (start)  ----------------------------------------------------------
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  169");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  169');
 
-      this.$router.push("/login");
+      this.$router.push('/login');
       // router push 테스트 (end)    ----------------------------------------------------------
     },
 
     async clickSignup() {
       // router push 테스트 (start)  ----------------------------------------------------------
-      console.log(">>>>>>>>>>>>>>>>>>>>>>  Start.vue  177");
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  177');
 
-      this.$router.push("/signup");
+      this.$router.push('/signup');
+      // router push 테스트 (end)    ----------------------------------------------------------
+    },
+
+    async testgojs() {
+      // router push 테스트 (start)  ----------------------------------------------------------
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  Start.vue  203');
+
+      this.$router.push('/testgojswordcloud');
       // router push 테스트 (end)    ----------------------------------------------------------
     },
   },

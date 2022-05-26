@@ -8,9 +8,9 @@
 //*
 //***********************************************************************************
 
-import Vue from "vue";
-import Vuex from "vuex";
-import common from "@/store/modules/common.js";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import common from '@/store/modules/common.js';
 
 Vue.use(Vuex);
 
