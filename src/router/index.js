@@ -10,7 +10,7 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Start from '@/views/Start.vue';
+import Main from '@/views/Main.vue';
 import Login from '@/views/Login.vue';
 import SignUp from '@/views/SignUp.vue';
 import Tmp from '@/views/Tmp.vue';
@@ -24,7 +24,7 @@ const NotFound = { template: '<div>Page not found</div>' };
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/', component: Start },
+    { path: '/', component: Main },
     { path: '/login', component: Login },
     { path: '/signup', component: SignUp },
     { path: '/tmp', component: Tmp },

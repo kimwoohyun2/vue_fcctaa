@@ -12,6 +12,11 @@
 
 <template>
   <div>
+    <select v-model="selectedRole">
+      <option v-for="(item, index) in roleArr" :key="index">
+        {{ item }}
+      </option>
+    </select>
     <input type="text" name="id" v-model="id" placeholder="아이디" />
     <input type="password" name="pw" v-model="pw" placeholder="비밀번호" />
 
@@ -23,7 +28,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+// axios를 임포트해서쓰지 말고 아래와 같이 api로 쓸 것
+// 이유는 인터셉터 등 설정이 되어 있기 때문이다.
+import api from '@/api';
 
 export default {
   name: 'SignUp',
@@ -32,37 +40,33 @@ export default {
     return {
       id: '',
       pw: '',
+      roleArr: ['admin', 'user'],
+      selectedRole: '',
     };
+  },
+
+  watch: {
+    selectedRole() {
+      console.log('>>>>>>>>>>>>>>>>>>>>>>  SignUp.vue  50');
+      console.log(this.selectedRole);
+    },
   },
 
   created() {},
 
   methods: {
     async clickSignUp() {
-      // let formdata = new FormData();
-
-      // formdata.append("name", this.id);
-      // formdata.append("id", this.id);
-      // formdata.append("pw", this.pw);
-
-      // formdata.set("name", this.id);
-      // formdata.set("id", this.id);
-      // formdata.set("pw", this.pw);
-
       console.log('>>>>>>>>>>>>>>>>>>>>>>  SignUp.vue  48');
       console.log(this.id);
       console.log(this.pw);
 
-      // console.log(">>>>>>>>>>>>>>>>>>>>>>  SignUp.vue  58");
-      // console.log(formdata.get("id"));
-      // console.log(formdata.get("pw"));
-
       const fd = {
         id: this.id,
         pw: this.pw,
+        role: this.selectedRole,
       };
 
-      const rtn1 = await axios.post('http://localhost:5050/signup', fd);
+      const rtn1 = await api.post('http://localhost:5050/signup', fd);
 
       // axios({
       //   method: "post",
@@ -77,6 +81,8 @@ export default {
 
       console.log('>>>>>>>>>>>>>>>>>>>>>>  SignUp.vue  76');
       console.log(rtn1);
+      alert(rtn1.data.msg);
+      this.$router.push('/');
     },
   },
 };
